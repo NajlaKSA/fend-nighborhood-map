@@ -84,15 +84,12 @@ function addMarkers(position , name)
             success: function (data) {
                 //write function to make infowindow appear onclicks.
                 //console.log("Ajax is Working!!! " + name);
-                var windowContent = "<div class='infowindow'> <h5>"+data[1]+"</h5> "
-                +"<p>More on Wikipedia: <a href='"+data[3]+"'>"+name+"</a></p></div>";
+                var windowContent = "<div class='infowindow'> <h5>"+data[1]+"</h5>"+"<p>More on Wikipedia: <a href='"+data[3]+"'>"+name+"</a></p></div>";
                 marker.addListener('click', function() {
                     if (data[2].length > 0) { // if not empty
                         infowindow.setContent(windowContent);
                     } else {
-                        infowindow.setContent("<div class='infowindow'>Nothing found on Wikipedia about <b> ("+name
-                        +")</b>, please check google for more information <a href='https://www.google.de/search?q=" 
-                        + name + "'>Click Here! </a></div>");
+                        infowindow.setContent("<div class='infowindow'>Nothing found on Wikipedia about <b> ("+name+")</b>, please check google for more information <a href='https://www.google.de/search?q="+name + "'>Click Here! </a></div>");
                     }
                     infowindow.open(map, marker);
                 });
@@ -113,7 +110,7 @@ var ViewModel = function() {
 
     this.displayItems = function(item) {
         var index = ((item.id === undefined )? -1 : item.id);
-        if (!(index === -1)){
+        if (index != -1){
             infowindow.setContent("<p>searching, please wait ....</p>");
             infowindow.open(map, markers[index]);
         }
@@ -124,14 +121,11 @@ var ViewModel = function() {
                 dataType: 'jsonp',
                 async: true,
                 success: function (data) {
-                    var windowContent = "<div class='infowindow'> <h5>" + data[1] + "</h5> "
-                        + "<p>More on Wikipedia: <a href='" + data[3] + "'>" + item.name + "</a></p></div>";
+                    var windowContent = "<div class='infowindow'> <h5>"+data[1]+"</h5> "+"<p>More on Wikipedia: <a href='" + data[3] + "'>" + item.name + "</a></p></div>";
                         if (data[2].length > 0) { // if not empty
                             infowindow.setContent(windowContent);
                         } else {
-                            infowindow.setContent("<div class='infowindow'>Nothing found on Wikipedia about <b> (" + item.name
-                                + ")</b>, please check google for more information <a href='https://www.google.de/search?q="
-                                + item.name + "'>Click Here! </a></div>");
+                            infowindow.setContent("<div class='infowindow'>Nothing found on Wikipedia about <b> ("+item.name+")</b>, please check google for more information <a href='https://www.google.de/search?q="+item.name + "'>Click Here! </a></div>");
                         }
                 },
                 error: function () {
@@ -156,7 +150,7 @@ var ViewModel = function() {
             }
         }
 
-    },
+    };
     // to take the value of field and call sort(value_of_field);
     this.field.subscribe(this.sort);
 
