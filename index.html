@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- ----------- imports --------------------- -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="js/lib/knockout-3.4.2.js" type="application/javascript"></script>
+
+    <title>♦ Neighborhood Map</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="row" id="wrapper">
+            <div id="sidebar" class="col-3 sidebar_shown">
+
+                <div class="form">
+                    <input data-bind="value: field , valueUpdate: 'keyup'" type="text" placeholder="sort list ..." class="form-control" id="formGroupExampleInput">
+                    <!-- <button type="button" class="btn btn-primary">sort</button> -->
+                </div>
+
+                <ul id="places" data-bind="template: {foreach:locDuplicate}">
+                    <li class="item" data-bind='click:displayItems , text:name'></li>
+                </ul>
+            </div>
+
+            <!-- ------------------------------ Map Side ------------------------------ -->
+            <div id="map_side" class="col-9">
+                <div class="" id="menu" class="">
+                    <img src="img/menu.png" alt="" id="menu_icon" data-bind="click:toggleMenu"/>
+                </div>
+                <div id="map_view" ></div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6uE6ZhotEiTUneEvDwZTGFU_IySO31K4&callback=initMap" onerror="errorMap()"></script>
+    <script src="js/app.js" type="application/javascript"></script>
+</body>
+
+</html>
