@@ -13,4 +13,4 @@
 * It also Included the vm (ViewModel) to provide sepration of the operations from the UI.
 
 ## Demo
-[check it here!](https://najlaksa.github.io/Neighborhood-Map)
+[check it here!](https://najlaksa.github.io/fend-nighborhood-map/)
