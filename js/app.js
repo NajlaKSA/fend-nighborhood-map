@@ -92,13 +92,30 @@ function addMarkers(position , name)
                         infowindow.setContent("<div class='infowindow'>Nothing found on Wikipedia about <b> ("+name+")</b>, please check google for more information <a href='https://www.google.de/search?q="+name + "'>Click Here! </a></div>");
                     }
                     infowindow.open(map, marker);
+                    handleBouncing(marker);
                 });
             },
             error: function(){
                 alert("something went wrong, please retry.");
+                handleBouncing(marker);
             }
         });
         markers.push(marker);//keep track of created markers.
+}
+
+function handleBouncing(marker){
+    for (var i = 0; i < markers.length; i++) {
+        if (marker.title == markers[i].title) {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        } else {
+            markers[i].setAnimation(null);
+
+        }
+    }
+    google.maps.event.addListener(infowindow,'closeclick',function(){
+        marker.setAnimation(null); //removes the marker
+        // then, remove the infowindows name from the array
+     });
 }
 
 //  =======================================================================================
@@ -113,6 +130,7 @@ var ViewModel = function() {
         if (index != -1){
             infowindow.setContent("<p>searching, please wait ....</p>");
             infowindow.open(map, markers[index]);
+            handleBouncing(markers[index]);
         }
             var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + item.name + "&limit=1&format=json";
             $.ajax({

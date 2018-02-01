@@ -33,7 +33,7 @@
 
 #sidebar {
     color: #eee;
-    background-color: #555;
+    background-color: rgb(29, 31, 75);
     padding-top: 10px;
     height: inherit;
 }
@@ -66,4 +66,19 @@
 }
 .item:hover {
     background-color: rgba(255, 255, 255, 0.267);
+}
+
+@media screen and (max-width: 600px){
+    #wrapper{
+                display: flex;
+        flex-direction: column;
+    }
+     #sidebar {
+        min-width: 100%;
+        overflow: auto;
+        background-color: rgb(29, 31, 75);
+    } 
+    #map_side {
+        min-width: 100%;
+    }
 }
