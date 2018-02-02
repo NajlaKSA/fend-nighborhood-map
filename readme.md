@@ -10,9 +10,11 @@
 
 ### How to run it:
 * Download this repository.
-* copy the files to the local web server's folder (htdocs).
-* run index.html.
-* Voilà!
+* click on clone or download.
+* Then download ZIP.
+* Extract the folder from the Zipped file.
+* Then open *index.html* on your favorite browser.
+* note that you must have internet connection in order to run this project correctly.
 
 ### JAVASCRIPT File (app.js):
 * In this file I created the attributes needed for this project such the locations array.
